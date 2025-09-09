@@ -4,7 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useFetchAnime } from "./hooks/useFetchAnime";
 import AnimeCard from "./components/AnimeCard";
 import AnimeFilter from "./components/AnimeFilter";
-import Spinner from "./components/Spinner";
+import Spinner from "@/app/components/Spinner";
 import { Anime } from "@/types/anime";
 import Pagination from "./components/Pagination";
 

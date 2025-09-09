@@ -1,7 +1,7 @@
 'use server'
 import Image from "next/image";
 import { Suspense } from "react";
-import Spinner from "../components/Spinner";
+import Spinner from "@/app/components/Spinner";
 
 interface DetailProps {
   params: { id: string };
