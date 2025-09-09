@@ -2,12 +2,10 @@ import { Globe, MapPinIcon } from "lucide-react";
 import Image from "next/image";
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import Menu from "./components/menu";
 
 export default function Home() {
   return (
     <div>
-      <Menu />
       <div className="center-container base-container">
         <div className="w-full max-w-4xl shadow-2xl rounded-2xl overflow-hidden">
           {/* Banner */}

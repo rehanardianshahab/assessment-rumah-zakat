@@ -12,12 +12,13 @@ export default function Menu() {
     const [isMenu, setMenu] = React.useState<boolean>(false);
     const menuData = [
         {icon: User2, label: "Profile", href: "/"},
-        {icon: GiNinjaMask, label: "Naruto", href: "/naruto"},
+        {icon: GiNinjaMask, label: "Jikan", href: "/jikan"},
         {icon: ShipIcon, label: "One Piece", href: "/onepiece"},
     ]
     return (
         <div className="z-50 fixed right-12 bottom-12">
             <div className="h-screen flex justify-center items-end w-full">
+                {/* Mobile */}
                 {/* Atur Menu saat muncul */}
                 <div className="fixed md:w-[calc(30vw-150px)] w-[calc(90vw-50px)] right-11 bottom-30 bg-red-900/90 backdrop-blur-[1px] text-white rounded-lg">
                     <div className="flex flex-col items-end transition-all duration-300">
