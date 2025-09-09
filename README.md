@@ -1,24 +1,50 @@
-# 🚀 Animanga - Next.js Project
+# 🏠 Task Assessment Rumah Zakat
 
-Project ini dibangun menggunakan **Next.js 15.5.2**, **React 19.1.0**, **TypeScript 5**, dan **Tailwind CSS 4**.  
-Tujuannya adalah untuk menampilkan data anime/manga menggunakan **Jikan API** dan **OMDb API** dengan tampilan responsive (mobile & desktop).
-
----
-
-## 📦 Prerequisites
-
-Sebelum mulai, pastikan sudah terinstall:
-
-- [Node.js](https://nodejs.org/) (versi **18.x** atau lebih baru)
-- [npm](https://www.npmjs.com/) atau [pnpm](https://pnpm.io/) atau [yarn](https://yarnpkg.com/)  
-  (di README ini contoh pakai **npm**)
+Proyek ini dibangun menggunakan **Next.js 15**, **React 19**, dan **TailwindCSS 4**.  
+Aplikasi ini dirancang agar mudah dikembangkan, dengan dukungan **Turbopack** untuk proses build & dev yang lebih cepat.
 
 ---
 
-## ⚙️ Instalasi
+## 🚀 Tech Stack
 
-Clone repository:
+- [Next.js 15.5.2](https://nextjs.org/) – React Framework
+- [React 19](https://react.dev/) – UI Library
+- [TailwindCSS 4](https://tailwindcss.com/) – Styling
+- [Framer Motion](https://www.framer.com/motion/) – Animations
+- [Lucide React](https://lucide.dev/) – Icons
+- [React Icons](https://react-icons.github.io/react-icons/) – Icon Library
+- [clsx](https://github.com/lukeed/clsx) – Conditional Class Utilities
+- [tailwind-merge](https://tailwind-merge.vercel.app/) – Utility Class Merging
+
+### 🔧 Dev Tools
+- [TypeScript](https://www.typescriptlang.org/) – Static Typing
+- [ESLint 9](https://eslint.org/) – Linting
+- [TailwindCSS PostCSS](https://tailwindcss.com/docs/using-with-preprocessors#post-css) – PostCSS Support
+- [tw-animate-css](https://www.npmjs.com/package/tw-animate-css) – Tailwind Animation Utilities
+
+---
+
+## 📦 Installation
+
+Clone repository lalu install dependencies:
 
 ```bash
-git clone https://github.com/username/animanga.git
-cd animanga
+# Clone project
+git clone <repo-url>
+
+# Masuk ke folder project
+cd ta-rumah-zakat
+
+# Install dependencies
+npm install
+
+```
+
+## 🔗 Access URL
+[https://rumahzakat-rehanardian.netlify.app](https://rumahzakat-rehanardian.netlify.app)
+
+## 🌐 Publisher
+Netlify
+
+## API Proxy
+Disini saya menggunakan API Proxy dari Next JS sebagai keamanan URL backend agar tidak ter-ekspose ke public
