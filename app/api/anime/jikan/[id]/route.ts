@@ -10,7 +10,7 @@ export async function GET(
     // ✅ params harus di-await karena di Next 15 build-time typing dianggap Promise
     const { id } = await context.params;
 
-    const response = await fetch(`${JIKAN_URL}/anime/${id}`, {
+    const response = await fetch(`${JIKAN_URL}/v4/anime/${id}`, {
       cache: "no-store",
     });
 
