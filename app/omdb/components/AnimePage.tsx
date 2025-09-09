@@ -48,7 +48,7 @@ export default function AnimePage() {
       {data.length === 0 ? (
         <p className="text-gray-500 mt-6 text-center">Tidak ada anime ditemukan.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 mt-6">
           {data.map((anime: AnimeOmdb) => (
             <AnimeCard key={anime.imdbID} anime={anime} />
           ))}
