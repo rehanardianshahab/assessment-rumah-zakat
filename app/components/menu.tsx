@@ -1,50 +1,75 @@
-'use client'
+"use client";
 
 import React from "react";
-
 import { MenuIcon, ShipIcon, User2 } from "lucide-react";
 import { CgClose } from "react-icons/cg";
+import { GiNinjaMask } from "react-icons/gi";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
-import { GiNinjaMask } from "react-icons/gi";
 
 export default function Menu() {
-    const [isMenu, setMenu] = React.useState<boolean>(false);
-    const menuData = [
-        {icon: User2, label: "Profile", href: "/"},
-        {icon: GiNinjaMask, label: "Jikan", href: "/jikan"},
-        {icon: ShipIcon, label: "One Piece", href: "/onepiece"},
-    ]
-    return (
-        <div className="z-50 fixed right-12 bottom-12">
-            <div className="h-screen flex justify-center items-end w-full">
-                {/* Mobile */}
-                {/* Atur Menu saat muncul */}
-                <div className="fixed md:w-[calc(30vw-150px)] w-[calc(90vw-50px)] right-11 bottom-30 bg-red-900/90 backdrop-blur-[1px] text-white rounded-lg">
-                    <div className="flex flex-col items-end transition-all duration-300">
-                        {!isMenu || menuData.map((item, index) => (
-                            <MenuItem key={index} href={item.href} icon={item.icon} label={item.label} />
-                        ))}
-                    </div>
-                </div>
-                {/* Button Menu */}
-                <div className={cn("bg-red-900 rounded-full p-2 cursor-pointer hover:opacity-100 transition-all duration-300",
-                    isMenu ? "rotate-180" : "rotate-0 opacity-60"
-                )} onClick={() => setMenu(!isMenu)}>
-                    {!isMenu ? <MenuIcon size={36} className="text-white"/> : <CgClose size={36} className="text-white"/>}
-                </div>
-            </div>
-        </div>
-    )
-}
+  const [isMenu, setMenu] = React.useState(false);
 
-function MenuItem({icon: Icon, label, href}: {icon: React.ElementType, label: string, href: string}) {
-    return (
-        <div className="p-4 border-b w-full text-right">
-            <Link href={href} className="flex justify-end items-center gap-2">
-                {Icon && <Icon size={20} />}
-                {label}
-            </Link>
+  const menuData = [
+    { icon: User2, label: "Profile", href: "/" },
+    { icon: GiNinjaMask, label: "Jikan", href: "/jikan" },
+    { icon: ShipIcon, label: "OMDb", href: "/omdb" },
+  ];
+
+  return (
+    <div className="z-40">
+      {/* Mobile Navbar */}
+      <div className="md:hidden bg-red-900 text-white shadow-md">
+        <div className="container mx-auto flex justify-between items-center px-6 py-3">
+          <h1 className="text-xl font-bold">Animanga</h1>
         </div>
-    )
+      </div>
+
+      {/* Menu Mobile */}
+      <div className="fixed right-6 bottom-6 md:hidden">
+        <div className="flex flex-col items-end gap-3">
+          {isMenu &&
+            menuData.map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                className="bg-red-900 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition"
+              >
+                <item.icon size={22} />
+              </Link>
+            ))}
+
+          {/* Button Trigger */}
+          <button
+            onClick={() => setMenu(!isMenu)}
+            className={cn(
+              "bg-red-900 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition",
+              isMenu && "rotate-180"
+            )}
+          >
+            {!isMenu ? <MenuIcon size={24} /> : <CgClose size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Menu Desktop */}
+      <div className="hidden md:block bg-red-900 text-white shadow-md">
+        <div className="container mx-auto flex justify-between items-center px-6 py-3">
+          <h1 className="text-xl font-bold">Animanga</h1>
+          <nav className="flex gap-6">
+            {menuData.map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                className="flex items-center gap-2 hover:text-gray-200 transition"
+              >
+                <item.icon size={18} />
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </div>
+  );
 }

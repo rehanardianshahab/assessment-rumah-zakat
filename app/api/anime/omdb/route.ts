@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-const NARUTO_URL = process.env.NEXT_PUBLIC_NARUTO_URL;
+const OMDB_URL = process.env.NEXT_PUBLIC_OMDB_URL;
+const OMDB_KEY = process.env.NEXT_PUBLIC_OMDB_KEY;
 
 export async function GET(
   req: Request,
@@ -8,20 +9,22 @@ export async function GET(
   try {
     const { searchParams } = new URL(req.url);
     const page = searchParams.get("page") || "1";
-    const perPage = searchParams.get("perPage") || "10";
+    const perPage = searchParams.get("perPage") || "12";
     const genre = searchParams.get("genre");
-    const search = searchParams.get("keyword");
-    const sortBy = searchParams.get("sortBy") || "mal_id";
+    const search = searchParams.get("s") || 'demon slayer';
+    const sortBy = searchParams.get("sortBy") || "title";
     const sortOrder = searchParams.get("sortOrder") || "desc";
 
-    // Cek anime untuk menentukan API URL
-    const baseUrl = `${NARUTO_URL}/v4/anime`;
+    const baseUrl = `${OMDB_URL}`;
+    
     // Filter Tabel
     const apiUrl = new URL(baseUrl);
+    apiUrl.searchParams.set("apikey", `${OMDB_KEY}`);
+    apiUrl.searchParams.set("i", "tt3896198");
     apiUrl.searchParams.set("page", page);
-    apiUrl.searchParams.set("per_page", perPage);
+    apiUrl.searchParams.set("limit", perPage);
     if (genre) apiUrl.searchParams.set("genres", genre);
-    if (search) apiUrl.searchParams.set("q", search);
+    if (search) apiUrl.searchParams.set("s", search);
     apiUrl.searchParams.set("order_by", sortBy);
     apiUrl.searchParams.set("sort", sortOrder);
 
@@ -34,8 +37,8 @@ export async function GET(
       );
     }
 
-    const { data, pagination } = await response.json();
-
+    const { Search, pagination } = await response.json();
+    
     return NextResponse.json({
       success: true,
       pagination,
@@ -47,7 +50,7 @@ export async function GET(
         sortBy,
         sortOrder,
       },
-      data,
+      data: Search,
     });
   } catch (error) {
     return NextResponse.json(

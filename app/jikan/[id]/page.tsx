@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Suspense } from "react";
 import Spinner from "@/app/components/Spinner";
+import Link from "next/link";
 
 interface DetailProps {
   params: { id: string };
@@ -29,6 +30,7 @@ async function Content({ id }: { id: string }) {
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
       {/* Header */}
+
       <div className="flex flex-col md:flex-row gap-6">
         {/* Gambar Anime */}
         <div className="w-full md:w-1/3">
@@ -47,10 +49,10 @@ async function Content({ id }: { id: string }) {
 
           <div className="flex gap-4 text-sm">
             <span className="bg-blue-600 text-white px-3 py-1 rounded-full">
-              {data.type}
+              {data.type || 'N/A'}
             </span>
             <span className="bg-green-600 text-white px-3 py-1 rounded-full">
-              {data.episodes} eps
+              {data.episodes || 0} eps
             </span>
             <span className="bg-yellow-600 text-white px-3 py-1 rounded-full">
               ⭐ {data.score || "N/A"}
@@ -66,11 +68,15 @@ async function Content({ id }: { id: string }) {
             <p><span className="font-semibold">Duration:</span> {data.duration}</p>
             <p><span className="font-semibold">Year:</span> {data.year || "N/A"}</p>
             <p><span className="font-semibold">Season:</span> {data.season || "N/A"}</p>
-            <p><span className="font-semibold">Rating:</span> {data.rating}</p>
+            <p><span className="font-semibold">Rating:</span> {data.rating || '-'}</p>
+          </div>
+
+          <div className="flex gap-4 mt-8">
+            <Link href="/jikan" className="px-4 py-2 bg-gray-100 text-gray-600 rounded-xl font-semibold">Back</Link>
+            <a href={data.url} target="_blank" className="px-4 py-2 bg-red-900 text-white rounded-xl font-semibold">More Detail</a>
           </div>
         </div>
       </div>
-
       {/* Trailer */}
       {data.trailer?.embed_url && (
         <div className="mt-10">

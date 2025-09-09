@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function AnimeCard({ anime }: { anime: Anime }) {
   return (
-    <div className="bg-red-900/80 rounded-xl shadow-lg p-3 text-white w-60 hover:scale-105 transition-transform">
+    <div className="bg-red-900/80 rounded-xl shadow-lg p-3 text-white w-60 hover:scale-105 transition-transform mx-auto">
       <Image
         src={anime.images?.jpg?.image_url || "/no-image.png"}
         alt={anime.title}

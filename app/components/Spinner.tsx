@@ -1,12 +1,14 @@
 "use client";
 
+import { Dot } from "lucide-react";
+
 export default function Spinner() {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
       <div className="relative">
         <div className="w-16 h-16 border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
         <span className="absolute inset-0 flex items-center justify-center text-xl font-bold animate-pulse">
-          ⚡
+          <Dot/>
         </span>
       </div>
 
