@@ -70,10 +70,11 @@ async function Content({ id }: { id: string }) {
             <p><span className="font-semibold">Season:</span> {data.season || "N/A"}</p>
             <p><span className="font-semibold">Rating:</span> {data.rating || '-'}</p>
           </div>
-
           <div className="flex gap-4 mt-8">
-            <Link href="/jikan" className="px-4 py-2 bg-gray-100 text-gray-600 rounded-xl font-semibold">Back</Link>
-            <a href={data.url} target="_blank" className="px-4 py-2 bg-red-900 text-white rounded-xl font-semibold">More Detail</a>
+            <Link href="/jikan" className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-semibold">Back</Link>
+          {data.url && (
+            <a href={data.url} target="_blank" className="px-4 py-2 bg-red-900 text-white rounded-lg font-semibold">More Detail</a>
+          )}
           </div>
         </div>
       </div>
