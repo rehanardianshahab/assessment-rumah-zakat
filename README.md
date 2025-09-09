@@ -1,7 +1,6 @@
 # 🏠 Task Assessment Rumah Zakat
 
-Proyek ini dibangun menggunakan **Next.js 15**, **React 19**, dan **TailwindCSS 4**.  
-Aplikasi ini dirancang agar mudah dikembangkan, dengan dukungan **Turbopack** untuk proses build & dev yang lebih cepat.
+Proyek ini dibangun menggunakan **Next.js 15**, **React 19**, dan **TailwindCSS 4**.
 
 ---
 
@@ -40,11 +39,11 @@ npm install
 
 ```
 
-## 🔗 Access URL
+## 🔗 Demo URL
 [https://rumahzakat-rehanardian.netlify.app](https://rumahzakat-rehanardian.netlify.app)
 
 ## 🌐 Publisher
 Netlify
 
-## API Proxy
-Disini saya menggunakan API Proxy dari Next JS sebagai keamanan URL backend agar tidak ter-ekspose ke public
+## 🔥 API Proxy
+Disini saya menggunakan API Proxy dari Next JS sebagai keamanan URL backend agar tidak langsung ter-ekspose ke public

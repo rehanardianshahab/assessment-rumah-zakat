@@ -26,6 +26,10 @@ export default function AnimePage() {
     sortOrder,
   }).toString();
 
+  // Fetching ini bisa saja digunakan untuk reload data tetapi disini saya gunakan untuk fetch data awal saja
+  // Tetapi ketika melakukan filter, saya menggunakan router.push untuk mengubah URL dan memicu fetching ulang
+  // Karena Next.js 13 dengan app directory belum mendukung useEffect untuk fetching ulang data pada perubahan state
+  // Jadi saya memanfaatkan perubahan URL sebagai trigger untuk fetching ulang data
   const { data, pagination, loading, error } = useFetchAnime(query);
 
   if (loading) return <Spinner />;
