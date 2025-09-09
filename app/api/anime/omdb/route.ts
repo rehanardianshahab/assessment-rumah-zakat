@@ -11,7 +11,7 @@ export async function GET(
     const page = searchParams.get("page") || "1";
     const perPage = searchParams.get("perPage") || "12";
     const genre = searchParams.get("genre");
-    const search = searchParams.get("s") || 'demon slayer';
+    const search = searchParams.get("keyword")|| 'demon slayer';
     const sortBy = searchParams.get("sortBy") || "title";
     const sortOrder = searchParams.get("sortOrder") || "desc";
 

@@ -17,7 +17,7 @@ export default function Spinner() {
       </h1>
 
       <div className="mt-4 w-48 h-2 bg-gray-700 rounded-full overflow-hidden">
-        <div className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-[loadingBar_2s_linear_infinite]" />
+        <div className="h-full bg-gradient-to-r from-red-500 via-purple-500 to-pink-500 animate-[loadingBar_2s_linear_infinite]" />
       </div>
 
       <style jsx>{`

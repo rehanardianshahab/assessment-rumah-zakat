@@ -1,16 +1,17 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-const OMDB_URL = process.env.NEXT_PUBLIC_OMDB_URL;
-const OMDB_KEY = process.env.NEXT_PUBLIC_OMDB_KEY;
+const OMDB_URL = process.env.NEXT_PUBLIC_OMDB_URL!;
+const OMDB_KEY = process.env.NEXT_PUBLIC_OMDB_KEY!;
 
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+  _req: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
-    const baseUrl = `${OMDB_URL}?i=${id}&apiKey=${OMDB_KEY}`;
+    // ✅ harus di-await
+    const { id } = await context.params;
 
+    const baseUrl = `${OMDB_URL}?i=${id}&apiKey=${OMDB_KEY}`;
     const response = await fetch(baseUrl, { cache: "no-store" });
 
     if (!response.ok) {

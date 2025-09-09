@@ -1,16 +1,18 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-const JIKAN_URL = process.env.NEXT_PUBLIC_JIKAN_URL;
+const JIKAN_URL = process.env.NEXT_PUBLIC_JIKAN_URL!;
 
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+  _req: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
-    const baseUrl = `${JIKAN_URL}/v4/anime/${id}`;
+    // ✅ params harus di-await karena di Next 15 build-time typing dianggap Promise
+    const { id } = await context.params;
 
-    const response = await fetch(baseUrl, { cache: "no-store" });
+    const response = await fetch(`${JIKAN_URL}/anime/${id}`, {
+      cache: "no-store",
+    });
 
     if (!response.ok) {
       return NextResponse.json(
@@ -20,6 +22,7 @@ export async function GET(
     }
 
     const { data } = await response.json();
+
     return NextResponse.json({
       success: true,
       data,
